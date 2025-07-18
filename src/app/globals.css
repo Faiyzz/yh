@@ -1,26 +1,259 @@
 @import "tailwindcss";
 
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap');
+
+
+/* Custom font for Rush Driver Italic and Trobus Expanded */
+@font-face {
+  font-family: 'Rush Driver Italic';
+  src: url('/fonts/rush-driver-italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Trobus Expanded';
+  src: url('/fonts/trobus-expanded.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Use Anton and Oswald as fallbacks */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-heading: 'Trobus Expanded', Anton, sans-serif;
+  --font-body: 'Rush Driver Italic', Oswald, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.6; transform: scale(0.98); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.8); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Metallic text effect */
+.metallic-text {
+  background: linear-gradient(
+    135deg,
+    #C8C8C9 0%, 
+    #FFFFFF 20%,
+    #8E9196 40%,
+    #FFFFFF 60%,
+    #8A898C 80%,
+    #FFFFFF 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-position: right bottom;
+  position: relative;
+  animation: shine 4s ease-in-out infinite;
+}
+
+.text-[#FFE241].metallic-text {
+  background: linear-gradient(
+    135deg,
+    #FFE241 0%, 
+    #FFF8CC 20%,
+    #FFE241 40%,
+    #FFF8CC 60%,
+    #FFE241 80%,
+    #FFF8CC 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Black outline for white text on photos - Enhanced */
+.text-with-outline {
+  text-shadow: 
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    -2px 0 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    0 2px 0 #000;
+}
+
+.text-outline-black {
+  text-shadow:
+    -3px -3px 0 #000,
+    3px -3px 0 #000,
+    -3px 3px 0 #000,
+    3px 3px 0 #000,
+    -3px 0 0 #000,
+    3px 0 0 #000,
+    0 -3px 0 #000,
+    0 3px 0 #000,
+    -2px -2px 2px #000,
+    2px -2px 2px #000,
+    -2px 2px 2px #000,
+    2px 2px 2px #000,
+    0 0 4px #000;
+}
+
+@keyframes shine {
+  0% { background-position: right bottom; }
+  25% { background-position: left bottom; }
+  50% { background-position: left top; }
+  75% { background-position: right top; }
+  100% { background-position: right bottom; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 3s infinite;
+}
+
+/* 3D Card effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-3d:hover {
+  transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
