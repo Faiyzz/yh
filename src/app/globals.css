@@ -1,13 +1,10 @@
-@import "tailwindcss";
-
-
-
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap');
 
+@import "tailwindcss";
 
 /* Custom font for Rush Driver Italic and Trobus Expanded */
-@font-face {
+/* @font-face {
   font-family: 'Rush Driver Italic';
   src: url('/fonts/rush-driver-italic.woff2') format('woff2');
   font-weight: normal;
@@ -21,7 +18,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* Use Anton and Oswald as fallbacks */
 :root {
@@ -119,11 +116,12 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     overflow-x: hidden; /* Prevent horizontal scrolling */
     font-family: var(--font-body);
   }
@@ -164,7 +162,6 @@
   );
   background-size: 200% 200%;
   background-clip: text;
-  text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-position: right bottom;
@@ -172,7 +169,7 @@
   animation: shine 4s ease-in-out infinite;
 }
 
-.text-[#FFE241].metallic-text {
+.text-yellow-metallic {
   background: linear-gradient(
     135deg,
     #FFE241 0%, 
@@ -184,13 +181,12 @@
   );
   background-size: 200% 200%;
   background-clip: text;
-  text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Black outline for white text on photos - Enhanced */
+ /* Black outline for white text on photos - Enhanced */
 .text-with-outline {
   text-shadow: 
     -2px -2px 0 #000,

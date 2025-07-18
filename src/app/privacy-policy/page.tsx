@@ -6,8 +6,8 @@ import dynamic from "next/dynamic"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-const Footer = dynamic(() => import("@/components/Footer"))
-const ThreeBackground = dynamic(() => import("@/components/ThreeBackground"), { ssr: false })
+const Footer = dynamic(() => import("@/components/Footer").then((mod) => mod.Footer))
+const ThreeBackground = dynamic(() => import("@/components/ThreeBackground").then((mod) => mod.ThreeBackground), { ssr: false })
 
 const PrivacyPolicy = () => {
   return (

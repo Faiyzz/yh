@@ -8,8 +8,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryProvider } from "@/components/providers/query-provider";
 
 export const metadata = {
-  title: "Ridgeback Builders",
+  title: "Ridgeback Builders - Residential Home Construction & Renovations",
   description: "Professional construction services in Florida",
+  icons: {
+    icon: "/favicon.png", // favicon.png should exist in /public
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

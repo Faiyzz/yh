@@ -168,6 +168,7 @@ export const ContactSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name *</Label>
                     <Input
+                    className="bg-white"
                       id="name"
                       {...register("name", { required: "Name is required" })}
                       placeholder="John Doe"
@@ -181,6 +182,7 @@ export const ContactSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address *</Label>
                     <Input
+                    className="bg-white"
                       id="email"
                       type="email"
                       {...register("email", {
@@ -203,6 +205,7 @@ export const ContactSection = () => {
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
+                  className="bg-white"
                     id="phone"
                     {...register("phone")}
                     placeholder="+1 (555) 123-4567"
@@ -232,6 +235,7 @@ export const ContactSection = () => {
                 <div className="space-y-2">
                   <Label htmlFor="message">Your Message *</Label>
                   <Textarea
+                  className="bg-white"
                     id="message"
                     {...register("message", {
                       required: "Message is required",

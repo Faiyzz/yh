@@ -12,6 +12,7 @@ export const ServiceAreaSection = () => {
           <Globe className="h-8 w-8 text-[#FFE241]" />
           <h2
             className="text-4xl font-bold text-white font-trobus"
+            style={{ fontFamily: "'Trobus Expanded', sans-serif" }}
           >
             <span className="text-white">COUNTIES WE</span>{" "}
             <span className="text-[#FFE241]">SERVE</span>
@@ -22,7 +23,7 @@ export const ServiceAreaSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           {/* Left Column */}
           <div className="order-2 lg:order-1">
-            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6 font-trobus">
+            <h3 style={{ fontFamily: "'Trobus Expanded', sans-serif" }} className="text-3xl lg:text-4xl font-bold text-white mb-6 font-trobus">
               <span className="text-white">BUILT FOR</span>{" "}
               <span className="text-[#FFE241]">FLORIDA</span>
             </h3>
@@ -56,7 +57,7 @@ export const ServiceAreaSection = () => {
                 alt="Logo"
                 width={112}
                 height={112}
-                className="absolute top-4 right-4 w-10 sm:w-10 md:w-10 lg:w-28 h-auto z-10"
+                className="absolute top-4 right-4 z-10"
               />
 
               {/* Map Image */}

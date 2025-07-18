@@ -104,7 +104,7 @@ export const HeroSection = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-[#FFE241] text-[#000000] hover:text-[#FFE241] hover:bg-[#FFE241]/10 group relative overflow-hidden transition-all duration-300"
+              className="border-[#FFE241] bg-white text-[#000000] hover:text-[#FFE241] hover:bg-[#FFE241]/10 group relative overflow-hidden transition-all duration-300"
             >
               <span className="relative z-10 flex items-center">
                 Contact Us
