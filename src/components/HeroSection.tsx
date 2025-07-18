@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { HardHat, Mail, ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const HeroSection = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -35,49 +36,46 @@ export const HeroSection = () => {
     >
       {/* Content */}
       <div
-        className={`container relative z-20 px-4 md:px-8 flex flex-col items-center text-center transition-all duration-1500 ${
+        className={`container relative z-20 px-4 md:px-8 flex flex-col items-center text-center transition-all duration-1000 ${
           isVisible ? "translate-y-0" : "translate-y-20"
         }`}
-        style={{ transitionDelay: "0.3s" }}
       >
         {/* Logo */}
         <div
           className={`mb-6 transition-all duration-1000 ${
             isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
           }`}
-          style={{ transitionDelay: "0.5s" }}
         >
-          <img
+          <Image
             src="/lovable-uploads/logo.jpg"
-            alt="Ridgeback Construction"
+            alt="Ridgeback Construction Logo"
+            width={320}
+            height={208}
             className="h-40 md:h-52 w-auto"
+            priority
           />
         </div>
 
+        {/* Heading */}
         <h1
           className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-8 font-trobus tracking-wider transition-all duration-1000 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
-          style={{ transitionDelay: "0.7s" }}
         >
-          <span className="inline-block">
-            <span className="text-[#FFE241] relative metallic-text">BUILT</span>
-          </span>{" "}
+          <span className="inline-block text-[#FFE241] metallic-text">BUILT</span>{" "}
           <span
             className={`inline-block text-white metallic-text transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
-            style={{ transitionDelay: "0.9s" }}
           >
             STRONG.
           </span>{" "}
           <span
-            className={`inline-block transition-all duration-1000 ${
+            className={`inline-block text-white metallic-text transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
-            style={{ transitionDelay: "1.1s" }}
           >
-            <span className="text-white relative metallic-text">BUILT RIGHT</span>
+            BUILT RIGHT
           </span>
         </h1>
 
@@ -86,12 +84,12 @@ export const HeroSection = () => {
           className={`flex gap-6 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
-          style={{ transitionDelay: "1.3s" }}
         >
-          <Link href="/projects">
+          <Link href="/projects" passHref>
             <Button
               size="lg"
               className="bg-[#FFE241] text-black hover:bg-[#FFE241]/90 group relative overflow-hidden transition-all duration-300"
+              aria-label="View our projects"
             >
               <span className="relative z-10 flex items-center">
                 Our Projects
@@ -100,11 +98,12 @@ export const HeroSection = () => {
               <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transform translate-y-full group-hover:translate-y-0 transition-all duration-300"></span>
             </Button>
           </Link>
-          <Link href="/contact">
+          <Link href="/contact" passHref>
             <Button
               variant="outline"
               size="lg"
-              className="border-[#FFE241] bg-white text-[#000000] hover:text-[#FFE241] hover:bg-[#FFE241]/10 group relative overflow-hidden transition-all duration-300"
+              className="border-[#FFE241] bg-white text-black hover:text-[#FFE241] hover:bg-[#FFE241]/10 group relative overflow-hidden transition-all duration-300"
+              aria-label="Contact us"
             >
               <span className="relative z-10 flex items-center">
                 Contact Us
@@ -119,7 +118,7 @@ export const HeroSection = () => {
       {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
 
-      {/* Back to Top Button */}
+      {/* Back to Top */}
       <button
         onClick={scrollToTop}
         className={`fixed bottom-8 right-8 z-50 bg-[#FFE241] text-black p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#FFE241]/90 hover:shadow-[#FFE241]/20 hover:shadow-xl ${

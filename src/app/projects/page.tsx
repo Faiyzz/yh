@@ -1,8 +1,9 @@
-"use client"
+
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, Home, Wrench, PaintBucket, Lightbulb } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import Image from "next/image";
+
 import {
   Carousel,
   CarouselContent,
@@ -119,9 +120,10 @@ const Projects = () => {
                             isVerticalGallery ? "aspect-[3/4]" : "aspect-[4/3]"
                           } bg-zinc-900`}
                         >
-                          <img
+                          <Image
                             src={image.src}
                             alt={image.alt}
+                            fill
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                         </div>
@@ -139,9 +141,10 @@ const Projects = () => {
                                   isVerticalGallery ? "aspect-[3/4]" : "aspect-[4/3]"
                                 } bg-zinc-900`}
                               >
-                                <img
+                                <Image
                                   src={image.src}
                                   alt={image.alt}
+                                  fill
                                   className="w-full h-full object-cover"
                                 />
                               </div>

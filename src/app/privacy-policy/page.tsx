@@ -50,7 +50,7 @@ const PrivacyPolicy = () => {
               </p>
 
               <p>
-                Ridgeback Construction ("we," "our," or "us") is committed to protecting your
+                Ridgeback Construction (&quot;we&quot;, &quot;our,&quot; or &quot;us&quot;) is committed to protecting your
                 privacy. This Privacy Policy explains how we collect, use, and safeguard your
                 information when you visit our website.
               </p>

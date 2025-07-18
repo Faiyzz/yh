@@ -52,13 +52,15 @@ export const ServiceAreaSection = () => {
           <div className="order-1 lg:order-2">
             <div className="relative rounded-xl border border-zinc-700 shadow-lg overflow-hidden">
               {/* Top-Right Logo */}
-              <Image
-                src="/lovable-uploads/logo.jpg"
-                alt="Logo"
-                width={112}
-                height={112}
-                className="absolute top-4 right-4 z-10"
-              />
+                      <Image
+            src="/lovable-uploads/logo.jpg"
+            alt="Logo"
+            width={112}
+            height={112}
+            className="absolute top-4 right-4 z-10 w-[112px] h-auto"
+          />
+
+
 
               {/* Map Image */}
               <Image

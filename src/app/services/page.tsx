@@ -1,8 +1,9 @@
-"use client"
+
 import { Footer } from "@/components/Footer";
 import { ThreeBackground } from "@/components/ThreeBackground";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Services = () => {
   const services = [
@@ -64,15 +65,16 @@ const Services = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {services.map((service, index) => (
+              {services.map((service, ) => (
                 <div 
                   key={service.title}
                   className="bg-zinc-900/50 backdrop-blur-sm rounded-lg border border-zinc-800 hover:border-[#FFE241]/50 transition-all duration-300 overflow-hidden"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
-                    <img 
+                    <Image
                       src={service.image} 
                       alt={service.title}
+                      fill
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                   </div>

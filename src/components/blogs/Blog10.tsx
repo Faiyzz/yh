@@ -1,6 +1,7 @@
 import { ArrowRight, Clock, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect } from "react";
 
 const IMAGES = [
@@ -44,7 +45,9 @@ const Blog10 = () => {
             </h1>
             <p
               className="text-lg text-gray-200 mt-4 max-w-xl font-medium"
-              style={{ fontFamily: "'Rush Driver Italic', 'Oswald', sans-serif" }}
+              style={{
+                fontFamily: "'Rush Driver Italic', 'Oswald', sans-serif",
+              }}
             >
               Ridgeback Builders shares the essentials for building a legal, comfortable, and profitable efficiency unit or ADU in Florida.
             </p>
@@ -67,33 +70,45 @@ const Blog10 = () => {
             </Button>
           </a>
         </div>
+
         {/* Blog content */}
-        <article className="prose prose-invert prose-lg md:prose-xl max-w-none text-gray-100 tracking-tight" style={{ fontFamily: "'Oswald', sans-serif" }}>
+        <article
+          className="prose prose-invert prose-lg md:prose-xl max-w-none text-gray-100 tracking-tight"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
           {/* 1st image */}
           <div className="w-full flex justify-center my-6">
-            <img src={IMAGES[0].src} alt={IMAGES[0].alt} className="rounded-xl shadow-md w-full md:w-2/3 object-cover" />
+            <div className="relative w-full md:w-2/3 aspect-video rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={IMAGES[0].src}
+                alt={IMAGES[0].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+                priority
+              />
+            </div>
           </div>
+
           <p>
-            Florida’s real estate market has fueled a huge demand for accessory dwelling units (ADUs) and efficiency units. Whether you're creating a rentable suite for extra income, a guest room, or a space for extended family, converting part of your home into an efficiency unit can be a high-ROI upgrade.
+            Florida’s real estate market has fueled a huge demand for accessory dwelling units (ADUs) and efficiency units. Whether you&apos;re creating a rentable suite for extra income, a guest room, or a space for extended family, converting part of your home into an efficiency unit can be a high-ROI upgrade.
           </p>
           <p>
             At <span className="font-semibold text-[#FFE241]">Ridgeback Builders</span>, we help homeowners throughout Fort Myers, Naples, Port Charlotte, Sarasota, Tampa, Bradenton, West Palm Beach, and Port St. Lucie convert garages, spare rooms, and additions into functional, rentable units that meet code and add long-term value.
           </p>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             What Is an Efficiency Unit?
           </h3>
-          <p>
-            An efficiency unit is a small, self-contained living space that typically includes:
-          </p>
+          <p>An efficiency unit is a small, self-contained living space that typically includes:</p>
           <ul className="list-disc pl-6 font-normal text-gray-100">
             <li>A bedroom or sleeping area</li>
             <li>A small kitchenette</li>
             <li>A bathroom</li>
             <li>A private entry</li>
           </ul>
-          <p>
-            Some are attached (converted garages or rooms), while others are detached (shed-to-suite conversions or additions).
-          </p>
+          <p>Some are attached (converted garages or rooms), while others are detached (shed-to-suite conversions or additions).</p>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 1: Define the Space You’ll Convert
           </h3>
@@ -103,19 +118,25 @@ const Blog10 = () => {
             <li>Split-layout additions with shared walls</li>
             <li>Backyard ADUs or tiny homes on slab</li>
           </ul>
-          <p>
-            Ridgeback Builders assesses zoning and building codes to determine what’s possible in your municipality.
-          </p>
+          <p>Ridgeback Builders assesses zoning and building codes to determine what’s possible in your municipality.</p>
+
           {/* 2nd image */}
           <div className="w-full flex justify-center my-6">
-            <img src={IMAGES[1].src} alt={IMAGES[1].alt} className="rounded-xl shadow-md w-full md:w-2/3 object-cover" />
+            <div className="relative w-full md:w-2/3 aspect-video rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={IMAGES[1].src}
+                alt={IMAGES[1].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+              />
+            </div>
           </div>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 2: Understand Florida Zoning Laws and Permits
           </h3>
-          <p>
-            Each city has different rules for ADUs and rental suites. You’ll need to consider:
-          </p>
+          <p>Each city has different rules for ADUs and rental suites. You’ll need to consider:</p>
           <ul className="list-disc pl-6 font-normal text-gray-100">
             <li>Zoning restrictions (some areas limit short-term rentals)</li>
             <li>Square footage minimums</li>
@@ -123,15 +144,12 @@ const Blog10 = () => {
             <li>Separate utility access (in some counties)</li>
             <li>Egress and ventilation codes</li>
           </ul>
-          <p>
-            Ridgeback Builders handles the permitting process from start to finish, working with your city or county to ensure everything is up to code.
-          </p>
+          <p>Ridgeback Builders handles the permitting process from start to finish, working with your city or county to ensure everything is up to code.</p>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 3: Plan the Layout for Comfort and Functionality
           </h3>
-          <p>
-            We help you maximize space by including:
-          </p>
+          <p>We help you maximize space by including:</p>
           <ul className="list-disc pl-6 font-normal text-gray-100">
             <li>Compact kitchenettes with mini-fridge and sink</li>
             <li>Efficient plumbing routes for the bathroom</li>
@@ -139,19 +157,25 @@ const Blog10 = () => {
             <li>Smart storage solutions</li>
             <li>Private entry doors for independence</li>
           </ul>
-          <p>
-            In a recent Tampa project, we converted a 1-car garage into a 350 sq. ft. efficiency unit with a full bath, kitchenette, and rear access door — perfect for Airbnb rental or long-term lease.
-          </p>
+          <p>In a recent Tampa project, we converted a 1-car garage into a 350 sq. ft. efficiency unit with a full bath, kitchenette, and rear access door — perfect for Airbnb rental or long-term lease.</p>
+
           {/* 3rd image */}
           <div className="w-full flex justify-center my-6">
-            <img src={IMAGES[2].src} alt={IMAGES[2].alt} className="rounded-xl shadow-md w-full md:w-2/3 object-cover" />
+            <div className="relative w-full md:w-2/3 aspect-video rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={IMAGES[2].src}
+                alt={IMAGES[2].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+              />
+            </div>
           </div>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 4: Build for Durability and Long-Term ROI
           </h3>
-          <p>
-            We use Florida-grade materials and finishes designed to last, such as:
-          </p>
+          <p>We use Florida-grade materials and finishes designed to last, such as:</p>
           <ul className="list-disc pl-6 font-normal text-gray-100">
             <li>Mold-resistant drywall and insulation</li>
             <li>Impact-rated windows</li>
@@ -159,9 +183,8 @@ const Blog10 = () => {
             <li>Water-resistant flooring</li>
             <li>Moisture-barrier protected plumbing</li>
           </ul>
-          <p>
-            Efficiency units should be both low-maintenance and cost-effective to operate, especially for short-term renters.
-          </p>
+          <p>Efficiency units should be both low-maintenance and cost-effective to operate, especially for short-term renters.</p>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Why Ridgeback Builders Is the Right Partner
           </h3>
@@ -171,9 +194,7 @@ const Blog10 = () => {
             <li>End-to-end service: design, permit, build</li>
             <li>Rental-ready finish standards</li>
           </ul>
-          <p>
-            Ridgeback Builders handles all of this to ensure every project is compliant with Florida Building Code. We serve the following Florida counties:
-          </p>
+          <p>Ridgeback Builders handles all of this to ensure every project is compliant with Florida Building Code. We serve the following Florida counties:</p>
           <ul className="list-disc pl-6 font-normal text-gray-100 columns-2 md:columns-3">
             <li>Lee County</li>
             <li>Collier County</li>
@@ -185,10 +206,11 @@ const Blog10 = () => {
             <li>Palm Beach County</li>
             <li>St. Lucie County</li>
           </ul>
+
           <div className="bg-[#ffe241]/10 border border-[#ffe241]/30 rounded-xl px-8 py-6 my-8 text-center shadow-xl ">
             <p className="text-xl font-bold metallic-text text-[#FFE241] mb-1">Turn Extra Space Into Rental Income</p>
             <p className="text-gray-100 font-medium">
-              If you're ready to increase your home’s value and start generating monthly income, let Ridgeback Builders help you build a legal, beautiful, and highly functional efficiency unit.
+              If you&apos;re ready to increase your home’s value and start generating monthly income, let Ridgeback Builders help you build a legal, beautiful, and highly functional efficiency unit.
             </p>
             <a href="/contact">
               <Button className="mt-4 bg-[#FFE241] text-black font-bold px-8 py-3 text-lg uppercase shadow-lg hover:bg-[#ffe241]/90" style={{fontFamily: "'Oswald',sans-serif"}}>
@@ -200,6 +222,7 @@ const Blog10 = () => {
             </p>
           </div>
         </article>
+
         <div className="text-center mt-12">
           <Link href="/blog">
             <Button

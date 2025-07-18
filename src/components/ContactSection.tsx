@@ -1,7 +1,6 @@
-// components/ContactSection.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { toast } from "./hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -11,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, Phone, CheckCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import clsx from "clsx";
 
 type ContactFormData = {
   name: string;
@@ -36,7 +36,6 @@ export const ContactSection = () => {
     reset,
     control,
     formState: { errors, isValid },
-    watch,
   } = useForm<ContactFormData>({
     mode: "onChange",
     defaultValues: {
@@ -47,8 +46,6 @@ export const ContactSection = () => {
       textAuthorization: true,
     },
   });
-
-  const textAuthorization = watch("textAuthorization", true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,6 +66,7 @@ export const ContactSection = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
+
     const adminParams = {
       from_name: data.name,
       from_email: data.email,
@@ -77,6 +75,7 @@ export const ContactSection = () => {
       to_email: "admin@ridgebackbuilt.com",
       subject: "New Contact Form Submission",
     };
+
     const customerParams = {
       from_name: data.name,
       from_email: data.email,
@@ -93,7 +92,6 @@ export const ContactSection = () => {
         adminParams,
         EMAILJS_PUBLIC_KEY
       );
-
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_CUSTOMER_TEMPLATE_ID,
@@ -109,6 +107,7 @@ export const ContactSection = () => {
 
       setFormSubmitted(true);
       setTimeout(() => setFormSubmitted(false), 5000);
+
       reset({
         name: "",
         email: "",
@@ -116,10 +115,15 @@ export const ContactSection = () => {
         message: "",
         textAuthorization: true,
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage =
+        error && typeof error === "object" && "message" in error
+          ? String((error as { message?: string }).message)
+          : "Unknown error";
+
       toast({
         title: "Something went wrong!",
-        description: `Unable to send your message: ${error.text || error.message || "Unknown error"}`,
+        description: `Unable to send your message: ${errorMessage}`,
         variant: "destructive",
       });
     } finally {
@@ -127,25 +131,14 @@ export const ContactSection = () => {
     }
   };
 
-  const getButtonClasses = () => {
-    const baseClasses = "w-full md:w-auto px-8 transition-all duration-500";
-    const animationClasses = inView
-      ? "opacity-100 translate-y-0"
-      : "opacity-0 translate-y-8";
-
-    return `${baseClasses} ${animationClasses} bg-[#FFE241] text-black hover:bg-[#FFE241]/90`;
-  };
-
   return (
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-4">
-        <h2
-          className="text-4xl font-bold mb-10 text-center md:text-left"
-          style={{ fontFamily: "'Trobus Expanded', sans-serif" }}
-        >
+        <h2 className="text-4xl font-bold mb-10 text-center md:text-left font-trobus">
           <span className="text-white metallic-text">GET IN</span>{" "}
           <span className="text-[#FFE241] metallic-text">TOUCH</span>
         </h2>
+
         <div className="flex flex-col md:flex-row gap-16">
           {/* Contact Form */}
           <div className="order-1 md:order-none md:w-2/3 md:pl-8 md:border-l border-zinc-800 transition-all duration-700">
@@ -159,7 +152,7 @@ export const ContactSection = () => {
                   Your message has been sent successfully.
                 </p>
                 <p className="text-gray-400 mt-2">
-                  We'll get back to you as soon as possible.
+                  We&apos;ll get back to you as soon as possible.
                 </p>
               </div>
             ) : (
@@ -168,49 +161,46 @@ export const ContactSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name *</Label>
                     <Input
-                    className="bg-white"
+                      className="bg-white"
                       id="name"
-                      {...register("name", { required: "Name is required" })}
                       placeholder="John Doe"
+                      {...register("name", { required: "Name is required" })}
                     />
                     {errors.name && (
-                      <p className="text-red-400 text-sm">
-                        {errors.name.message}
-                      </p>
+                      <p className="text-red-400 text-sm">{errors.name.message}</p>
                     )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email Address *</Label>
                     <Input
-                    className="bg-white"
+                      className="bg-white"
                       id="email"
                       type="email"
+                      placeholder="john@example.com"
                       {...register("email", {
                         required: "Email is required",
                         pattern: {
-                          value:
-                            /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                           message: "Invalid email address",
                         },
                       })}
-                      placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <p className="text-red-400 text-sm">
-                        {errors.email.message}
-                      </p>
+                      <p className="text-red-400 text-sm">{errors.email.message}</p>
                     )}
                   </div>
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
-                  className="bg-white"
+                    className="bg-white"
                     id="phone"
-                    {...register("phone")}
                     placeholder="+1 (555) 123-4567"
+                    {...register("phone")}
                   />
                 </div>
+
                 <div className="flex items-start space-x-3">
                   <Controller
                     name="textAuthorization"
@@ -228,29 +218,33 @@ export const ContactSection = () => {
                     htmlFor="textAuthorization"
                     className="text-xs text-gray-300 leading-relaxed cursor-pointer"
                   >
-                    We do not sell your information. By checking this box you
-                    authorize text messages from Ridgeback Builders, Inc.
+                    We do not sell your information. By checking this box you authorize
+                    text messages from Ridgeback Builders, Inc.
                   </Label>
                 </div>
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Your Message *</Label>
                   <Textarea
-                  className="bg-white"
+                    className="bg-white"
                     id="message"
-                    {...register("message", {
-                      required: "Message is required",
-                    })}
                     placeholder="Tell us about your project..."
+                    {...register("message", { required: "Message is required" })}
                   />
                   {errors.message && (
-                    <p className="text-red-400 text-sm">
-                      {errors.message.message}
-                    </p>
+                    <p className="text-red-400 text-sm">{errors.message.message}</p>
                   )}
                 </div>
+
                 <Button
                   type="submit"
-                  className={getButtonClasses()}
+                  className={clsx(
+                    "w-full md:w-auto px-8 transition-all duration-500",
+                    inView
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8",
+                    "bg-[#FFE241] text-black hover:bg-[#FFE241]/90"
+                  )}
                   disabled={isSubmitting || !isValid}
                 >
                   <span className="relative z-10 flex items-center">
@@ -282,6 +276,7 @@ export const ContactSection = () => {
               </form>
             )}
           </div>
+
           {/* Contact Info */}
           <div className="order-2 md:order-none md:w-1/3 transition-all duration-700">
             <div className="space-y-8">
@@ -289,7 +284,7 @@ export const ContactSection = () => {
                 <a
                   href="mailto:info@ridgebackbuilt.com"
                   className="bg-[#FFE241] p-3 rounded-lg transform transition-transform hover:scale-110 hover:rotate-6 duration-300"
-                  aria-label="Send email to info@RidgebackBuilt.com"
+                  aria-label="Send email to info@ridgebackbuilt.com"
                 >
                   <Mail className="h-6 w-6 text-black" />
                 </a>
@@ -297,9 +292,10 @@ export const ContactSection = () => {
                   <h3 className="font-semibold text-white mb-1 metallic-text">
                     Email Us
                   </h3>
-                  <p className="text-gray-300">info@RidgebackBuilt.com</p>
+                  <p className="text-gray-300">info@ridgebackbuilt.com</p>
                 </div>
               </div>
+
               <div className="flex items-start gap-4">
                 <a
                   href="tel:8139211717"

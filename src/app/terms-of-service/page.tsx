@@ -54,7 +54,7 @@ const TermsOfService = () => {
               </p>
 
               <p>
-                These Terms of Service ("Terms") govern your use of Ridgeback Construction's services
+                These Terms of Service (&quot;Terms&quot;) govern your use of Ridgeback Construction&apso;s services
                 and website. By using our services, you agree to these terms.
               </p>
 

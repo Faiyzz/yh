@@ -44,7 +44,7 @@ const AboutPage = () => {
             <div className="space-y-8 text-lg text-gray-300 leading-relaxed">
               <p>
                 At Ridgeback Builders, we are dedicated to building more than
-                just structures – we build dreams, foundations for families, and
+                just structures -- We build dreams, foundations for families, and
                 landmarks for communities. With years of experience in the
                 construction industry, our team brings expertise, passion, and
                 unwavering commitment to every project we undertake.
@@ -54,7 +54,7 @@ const AboutPage = () => {
                 Founded on the principles of quality craftsmanship and customer
                 satisfaction, Ridgeback Builders has established itself as a
                 trusted name in residential construction and renovation
-                services. Our motto, "BUILT STRONG. BUILT RIGHT," reflects our
+                services. Our motto, &quot;BUILT STRONG. BUILT RIGHT&quot; reflects our
                 dedication to excellence in every aspect of our work.
               </p>
 
@@ -67,7 +67,7 @@ const AboutPage = () => {
 
               <p>
                 To deliver exceptional construction services that exceed our
-                clients' expectations while maintaining the highest standards of
+                client&apos;s expectations while maintaining the highest standards of
                 safety, quality, and professionalism. We believe in building
                 lasting relationships with our clients through transparent
                 communication, reliable service, and superior results.

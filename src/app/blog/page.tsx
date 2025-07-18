@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FileText, Clock, ArrowRight, Home } from "lucide-react";
-
+import { FileText, ArrowRight, Home } from "lucide-react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/components/BlogSection";
@@ -64,9 +64,10 @@ const BlogPage = () => {
                 }}
               >
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    fill
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

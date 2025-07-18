@@ -2,6 +2,7 @@ import { ArrowRight, Clock, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect } from "react";
+import Image from "next/image"; // ✅ added
 
 const IMAGES = [
   {
@@ -61,18 +62,28 @@ const GarageEntryDoorFlorida = () => {
             <span className="uppercase tracking-wider text-xs">FREE GARAGE DOOR CONSULTATION</span>
           </div>
           <a href="/contact" className="mt-2 md:mt-0">
-            <Button className="bg-[#FFE241] text-black hover:bg-[#ffd500] px-7 py-2 font-trobus font-bold shadow-lg uppercase tracking-wide text-base" style={{fontFamily: "'Trobus Expanded', sans-serif"}}>
+            <Button className="bg-[#FFE241] text-black hover:bg-[#ffd500] px-7 py-2 font-trobus font-bold shadow-lg uppercase tracking-wide text-base" style={{ fontFamily: "'Trobus Expanded', sans-serif" }}>
               Schedule Now
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </a>
         </div>
+
         {/* Blog content */}
         <article className="prose prose-invert prose-lg md:prose-xl max-w-none text-gray-100 tracking-tight" style={{ fontFamily: "'Oswald', sans-serif" }}>
           {/* 1st image */}
           <div className="w-full flex justify-center my-6">
-            <img src={IMAGES[0].src} alt={IMAGES[0].alt} className="rounded-xl shadow-md w-full md:w-2/3 object-cover" />
+            <div className="relative w-full md:w-2/3 aspect-video rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={IMAGES[0].src}
+                alt={IMAGES[0].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+              />
+            </div>
           </div>
+
           <p>
             Adding a new door to your garage is one of the most overlooked upgrades for Florida homeowners. It boosts convenience, improves ventilation, and increases resale value.
           </p>
@@ -82,6 +93,7 @@ const GarageEntryDoorFlorida = () => {
           <p>
             Here’s what you need to know before creating a new door in your Florida garage.
           </p>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Why Homeowners Want a Garage Entry Door
           </h3>
@@ -91,6 +103,7 @@ const GarageEntryDoorFlorida = () => {
             <li>Better airflow, insulation, and lighting</li>
             <li>Emergency exit</li>
           </ul>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 1: Identify the Structural Wall Type
           </h3>
@@ -103,6 +116,7 @@ const GarageEntryDoorFlorida = () => {
             <li>Ensure any structural changes include headers, pre-cast lintels, or load redistribution</li>
             <li>Reinforce the opening before cutting</li>
           </ul>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 2: Choose the Right Door Type
           </h3>
@@ -118,16 +132,24 @@ const GarageEntryDoorFlorida = () => {
           <p>
             We also advise on door swing direction based on yard layout, security, and Florida wind zone requirements.
           </p>
+
           {/* 2nd image */}
           <div className="w-full flex justify-center my-6">
-            <img src={IMAGES[1].src} alt={IMAGES[1].alt} className="rounded-xl shadow-md w-full md:w-2/3 object-cover" />
+            <div className="relative w-full md:w-2/3 aspect-video rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={IMAGES[1].src}
+                alt={IMAGES[1].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+              />
+            </div>
           </div>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 3: Cutting and Framing the Opening
           </h3>
-          <p>
-            Our team will:
-          </p>
+          <p>Our team will:</p>
           <ul className="list-disc pl-6 font-normal text-gray-100">
             <li>Mark and cut the wall with precision tools</li>
             <li>Frame the opening to match the door size and code requirements</li>
@@ -138,6 +160,7 @@ const GarageEntryDoorFlorida = () => {
           <p>
             In a recent Sarasota project, Ridgeback Builders installed a new garage-to-backyard entry door in just two days, including permit approvals and full exterior stucco patching, giving the homeowners easy access without compromising curb appeal.
           </p>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Step 4: Engineering Plans, Permits, Inspections, and Florida Code
           </h3>
@@ -150,10 +173,20 @@ const GarageEntryDoorFlorida = () => {
             <li>Coastal wind zone compliance</li>
             <li>Inspection coordination with your city or county</li>
           </ul>
+
           {/* 3rd image */}
           <div className="w-full flex justify-center my-6">
-            <img src={IMAGES[2].src} alt={IMAGES[2].alt} className="rounded-xl shadow-md w-full md:w-2/3 object-cover" />
+            <div className="relative w-full md:w-2/3 aspect-video rounded-xl shadow-md overflow-hidden">
+              <Image
+                src={IMAGES[2].src}
+                alt={IMAGES[2].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+              />
+            </div>
           </div>
+
           <h3 className="text-lg md:text-xl font-medium mt-8 text-[#FFE241]">
             Why Florida Homeowners Choose Ridgeback Builders
           </h3>
@@ -178,18 +211,22 @@ const GarageEntryDoorFlorida = () => {
             <li>Palm Beach County</li>
             <li>St. Lucie County</li>
           </ul>
-          <div className="bg-[#ffe241]/10 border border-[#ffe241]/30 rounded-xl px-8 py-6 my-8 text-center shadow-xl ">
-            <p className="text-xl font-bold metallic-text text-[#FFE241] mb-1">Ready to Add That Garage Door?</p>
+
+          <div className="bg-[#ffe241]/10 border border-[#ffe241]/30 rounded-xl px-8 py-6 my-8 text-center shadow-xl">
+            <p className="text-xl font-bold metallic-text text-[#FFE241] mb-1">
+              Ready to Add That Garage Door?
+            </p>
             <p className="text-gray-100 font-medium">
               Let Ridgeback Builders evaluate your space, help you pick the right door, and install it professionally from start to finish.
             </p>
             <a href="/contact">
-              <Button className="mt-4 bg-[#FFE241] text-black font-bold px-8 py-3 text-lg uppercase shadow-lg hover:bg-[#ffe241]/90" style={{fontFamily: "'Oswald',sans-serif"}}>
+              <Button className="mt-4 bg-[#FFE241] text-black font-bold px-8 py-3 text-lg uppercase shadow-lg hover:bg-[#ffe241]/90" style={{ fontFamily: "'Oswald',sans-serif" }}>
                 Schedule a Free Garage Door Consultation
               </Button>
             </a>
           </div>
         </article>
+
         <div className="text-center mt-12">
           <Link href="/blog">
             <Button
