@@ -51,14 +51,15 @@ export const HeroSection = () => {
             alt="Ridgeback Construction Logo"
             width={320}
             height={208}
-            className="h-40 md:h-52 w-auto"
+            className="h-32 md:h-40 lg:h-52 w-auto"
             priority
+            sizes="(max-width: 768px) 280px, (max-width: 1024px) 320px, 416px"
           />
         </div>
 
         {/* Heading */}
         <h1
-          className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-8 font-trobus tracking-wider transition-all duration-1000 ${
+          className={`text-3xl md:text-5xl lg:text-7xl font-bold mb-8 font-trobus tracking-wider transition-all duration-1000 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
@@ -81,14 +82,14 @@ export const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div
-          className={`flex gap-6 transition-all duration-1000 ${
+          className={`flex flex-col sm:flex-row gap-4 sm:gap-6 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           <Link href="/projects" passHref>
             <Button
               size="lg"
-              className="bg-[#FFE241] text-black hover:bg-[#FFE241]/90 group relative overflow-hidden transition-all duration-300"
+              className="bg-[#FFE241] text-black hover:bg-[#FFE241]/90 group relative overflow-hidden transition-all duration-300 w-full sm:w-auto"
               aria-label="View our projects"
             >
               <span className="relative z-10 flex items-center">
@@ -102,7 +103,7 @@ export const HeroSection = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-[#FFE241] bg-white text-black hover:text-[#FFE241] hover:bg-[#FFE241]/10 group relative overflow-hidden transition-all duration-300"
+              className="border-[#FFE241] bg-white text-black hover:text-[#FFE241] hover:bg-[#FFE241]/10 group relative overflow-hidden transition-all duration-300 w-full sm:w-auto"
               aria-label="Contact us"
             >
               <span className="relative z-10 flex items-center">

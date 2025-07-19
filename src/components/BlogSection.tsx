@@ -144,7 +144,7 @@ export const BlogSection = () => {
         >
           <div className="flex items-center gap-4">
             <FileText className="h-10 w-10 text-[#FFE241]" />
-            <h2 className="text-4xl font-trobus font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-trobus font-bold text-white">
               EXPERT <span className="text-[#FFE241]">INSIGHTS</span>
             </h2>
           </div>
@@ -155,16 +155,21 @@ export const BlogSection = () => {
           {displayedPosts.map((post, index) => (
             <Card
               key={post.id}
-              className={`bg-zinc-800 border-0 overflow-hidden transform transition-all duration-700 ${
+              className={`bg-zinc-800 border-0 overflow-hidden transform transition-all duration-700 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#FFE241]/10 ${
                 inView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-5 scale-95"
-              } delay-[${300 + index * 100}ms] group`}
+              } group`}
+              style={{
+                transitionDelay: `${300 + index * 100}ms`,
+              }}
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden relative">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
               </div>
               <CardContent className="p-6">

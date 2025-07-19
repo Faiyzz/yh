@@ -1,11 +1,26 @@
-
+import { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { ThreeBackground } from "@/components/ThreeBackground";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-const Services = () => {
+export const metadata: Metadata = {
+  title: "Our Services",
+  description: "Comprehensive construction services including residential projects, renovations, project management, and design consulting in Florida.",
+  openGraph: {
+    title: "Construction Services - Ridgeback Builders",
+    description: "Professional construction and renovation services in Florida.",
+  },
+};
+
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" }
+];
+
+export default function Services() {
   const services = [
     {
       image: "/project/rp/1.jpg",
@@ -41,6 +56,8 @@ const Services = () => {
       
       {/* Content */}
       <div className="relative z-20">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         {/* Navigation */}
         <nav className="p-6">
           <Link 
@@ -55,7 +72,7 @@ const Services = () => {
         {/* Services Content */}
         <section className="py-24 px-4">
           <div className="container mx-auto max-w-6xl">
-            <h1 className="text-6xl font-bold mb-12 text-center" style={{ fontFamily: "'Trobus Expanded', sans-serif" }}>
+            <h1 className="text-4xl md:text-6xl font-bold mb-12 text-center" style={{ fontFamily: "'Trobus Expanded', sans-serif" }}>
               <span className="text-white metallic-text">OUR</span> <span className="text-[#FFE241] metallic-text">SERVICES</span>
             </h1>
             
@@ -65,17 +82,19 @@ const Services = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {services.map((service, ) => (
+              {services.map((service) => (
                 <div 
                   key={service.title}
                   className="bg-zinc-900/50 backdrop-blur-sm rounded-lg border border-zinc-800 hover:border-[#FFE241]/50 transition-all duration-300 overflow-hidden"
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[4/3] overflow-hidden relative">
                     <Image
                       src={service.image} 
                       alt={service.title}
                       fill
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 hover:scale-110"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-8">
@@ -117,6 +136,4 @@ const Services = () => {
       </div>
     </div>
   );
-};
-
-export default Services;
+}

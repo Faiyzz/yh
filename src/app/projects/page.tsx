@@ -1,8 +1,9 @@
-
+import { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, Home, Wrench, PaintBucket, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 import {
   Carousel,
@@ -12,7 +13,21 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const Projects = () => {
+export const metadata: Metadata = {
+  title: "Our Projects",
+  description: "Explore our portfolio of completed construction projects including residential builds, renovations, and design consulting work in Florida.",
+  openGraph: {
+    title: "Construction Projects - Ridgeback Builders",
+    description: "View our portfolio of residential construction and renovation projects.",
+  },
+};
+
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/projects" }
+];
+
+export default function Projects() {
   // Reorder categories: Residential, Project Management, then others
   const projectCategories = [
     {
@@ -67,6 +82,8 @@ const Projects = () => {
     <div className="min-h-screen bg-black text-white relative">
       {/* Content */}
       <div className="relative z-20">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         {/* Navigation */}
         <nav className="p-6">
           <Link 
@@ -81,7 +98,7 @@ const Projects = () => {
         {/* Projects Content */}
         <section className="py-24 px-4">
           <div className="container mx-auto max-w-6xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-12 text-center" style={{ fontFamily: "'Trobus Expanded', sans-serif" }}>
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-12 text-center" style={{ fontFamily: "'Trobus Expanded', sans-serif" }}>
               <span className="text-white metallic-text">OUR</span> <span className="text-[#FFE241]">PROJECTS</span>
             </h1>
             
@@ -124,7 +141,9 @@ const Projects = () => {
                             src={image.src}
                             alt={image.alt}
                             fill
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="(max-width: 1200px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
                           />
                         </div>
                       ))}
@@ -145,7 +164,9 @@ const Projects = () => {
                                   src={image.src}
                                   alt={image.alt}
                                   fill
-                                  className="w-full h-full object-cover"
+                                  sizes="100vw"
+                                  className="object-cover"
+                                  loading="lazy"
                                 />
                               </div>
                             </CarouselItem>
@@ -187,6 +208,4 @@ const Projects = () => {
       </div>
     </div>
   );
-};
-
-export default Projects;
+}

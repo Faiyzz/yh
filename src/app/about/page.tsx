@@ -1,12 +1,26 @@
-'use client';
-
+import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { Footer } from "@/components/Footer";
 import { ThreeBackground } from "@/components/ThreeBackground";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-const AboutPage = () => {
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn about Ridgeback Builders - dedicated to building dreams, foundations for families, and landmarks for communities. Expert construction services in Florida.",
+  openGraph: {
+    title: "About Ridgeback Builders",
+    description: "Learn about our mission, values, and commitment to quality construction in Florida.",
+  },
+};
+
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" }
+];
+
+export default function AboutPage() {
   return (
     <div className="min-h-screen bg-black text-white relative">
       {/* 3D Background */}
@@ -19,6 +33,8 @@ const AboutPage = () => {
 
       {/* Content */}
       <div className="relative z-20">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         {/* Navigation */}
         <nav className="p-6">
           <Link
@@ -34,7 +50,7 @@ const AboutPage = () => {
         <section className="py-24 px-4">
           <div className="container mx-auto max-w-4xl">
             <h1
-              className="text-6xl font-bold mb-12 text-center"
+              className="text-4xl md:text-6xl font-bold mb-12 text-center"
               style={{ fontFamily: "'Trobus Expanded', sans-serif" }}
             >
               <span className="text-white metallic-text">ABOUT</span>{" "}
@@ -106,6 +122,4 @@ const AboutPage = () => {
       </div>
     </div>
   );
-};
-
-export default AboutPage;
+}

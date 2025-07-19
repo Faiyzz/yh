@@ -31,7 +31,7 @@ export const GallerySection = () => {
       {/* Heading */}
       <div className="container mx-auto px-6 flex items-center gap-4 mb-12">
         <HardHat className="h-8 w-8 text-[#FFE241]" />
-        <h2 className="text-4xl font-bold font-trobus">
+        <h2 className="text-3xl md:text-4xl font-bold font-trobus">
           NEW <span className="text-[#FFE241]">CONSTRUCTION</span>
         </h2>
       </div>
@@ -65,20 +65,21 @@ export const GallerySection = () => {
           {galleryImages.map((img) => (
             <motion.div
               key={img.id}
-              className="min-w-[320px] snap-center shrink-0 relative overflow-hidden rounded-2xl group bg-white flex items-center justify-center p-2 cursor-pointer"
+              className="min-w-[280px] md:min-w-[320px] snap-center shrink-0 relative overflow-hidden rounded-2xl group bg-white flex items-center justify-center p-2 cursor-pointer"
               transition={{ duration: 0.3 }}
               onClick={() => setSelectedImg(img)}
             >
-              <div className="relative w-[304px] md:w-full h-[400px] flex items-center justify-center">
+              <div className="relative w-full h-[400px] flex items-center justify-center">
                 <Image
                   src={img.src}
                   alt={img.title}
-                  width={304}
-                  height={400}
-                  className="w-[304px] md:w-full h-full object-cover rounded-xl"
+                  fill
+                  sizes="(max-width: 768px) 280px, 320px"
+                  className="object-cover rounded-xl"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-6 left-6 z-20">
-                  <h3 className="text-xl font-bold text-white mb-1 text-outline-black font-trobus">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1 text-outline-black font-trobus">
                     {img.title}
                   </h3>
                   <div className="h-1 w-12 bg-[#FFE241] group-hover:w-24 transition-all duration-300" />
@@ -93,35 +94,37 @@ export const GallerySection = () => {
       <AnimatePresence>
         {selectedImg && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImg(null)}
           >
             <motion.div
-              className="relative bg-black rounded-2xl p-4 max-w-3xl w-full"
+              className="relative bg-black rounded-2xl p-4 max-w-4xl w-full max-h-[90vh] overflow-hidden"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-2 right-2 text-white hover:text-[#FFE241] transition"
+                className="absolute top-2 right-2 text-white hover:text-[#FFE241] transition z-10"
                 onClick={() => setSelectedImg(null)}
                 aria-label="Close Modal"
               >
                 <X size={32} />
               </button>
-              <Image
-                src={selectedImg.src}
-                alt={selectedImg.title}
-                width={1024}
-                height={768}
-                className="w-full max-h-[70vh] object-contain rounded-xl"
-              />
+              <div className="relative w-full h-[60vh] md:h-[70vh]">
+                <Image
+                  src={selectedImg.src}
+                  alt={selectedImg.title}
+                  fill
+                  className="object-contain rounded-xl"
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                />
+              </div>
               <div className="mt-4 text-center">
-                <h3 className="text-2xl font-bold text-white text-outline-black font-trobus">
+                <h3 className="text-xl md:text-2xl font-bold text-white text-outline-black font-trobus">
                   {selectedImg.title}
                 </h3>
               </div>

@@ -1,15 +1,25 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Footer } from "@/components/Footer";
+import { ThreeBackground } from "@/components/ThreeBackground";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Privacy Policy for Ridgeback Builders - Learn how we protect and handle your personal information.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
-"use client"
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Privacy Policy", href: "/privacy-policy" }
+];
 
-import dynamic from "next/dynamic"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-
-const Footer = dynamic(() => import("@/components/Footer").then((mod) => mod.Footer))
-const ThreeBackground = dynamic(() => import("@/components/ThreeBackground").then((mod) => mod.ThreeBackground), { ssr: false })
-
-const PrivacyPolicy = () => {
+export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-black text-white relative">
       {/* 3D Background */}
@@ -22,6 +32,8 @@ const PrivacyPolicy = () => {
 
       {/* Content */}
       <div className="relative z-20">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         {/* Navigation */}
         <nav className="p-6">
           <Link
@@ -37,7 +49,7 @@ const PrivacyPolicy = () => {
         <section className="py-24 px-4">
           <div className="container mx-auto max-w-4xl">
             <h1
-              className="text-6xl font-bold mb-12 text-center"
+              className="text-4xl md:text-6xl font-bold mb-12 text-center"
               style={{ fontFamily: "'Trobus Expanded', sans-serif" }}
             >
               <span className="text-white metallic-text">PRIVACY</span>{" "}
@@ -89,7 +101,5 @@ const PrivacyPolicy = () => {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
-
-export default PrivacyPolicy

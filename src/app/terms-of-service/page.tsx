@@ -1,19 +1,25 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Footer } from "@/components/Footer";
+import { ThreeBackground } from "@/components/ThreeBackground";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-"use client"
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Terms of Service for Ridgeback Builders - Learn about our service terms and conditions.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
-import dynamic from "next/dynamic"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Terms of Service", href: "/terms-of-service" }
+];
 
-// Always use @ for alias paths (configured via tsconfig.json or jsconfig.json)
-const Footer = dynamic(() => import("@/components/Footer").then((mod) => mod.Footer))
-const ThreeBackground = dynamic(() =>
-  import("@/components/ThreeBackground").then((mod) => mod.ThreeBackground),
-  { ssr: false }
-)
-
-
-const TermsOfService = () => {
+export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-black text-white relative">
       {/* 3D Background */}
@@ -26,6 +32,8 @@ const TermsOfService = () => {
 
       {/* Content */}
       <div className="relative z-20">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         {/* Navigation */}
         <nav className="p-6">
           <Link
@@ -41,7 +49,7 @@ const TermsOfService = () => {
         <section className="py-24 px-4">
           <div className="container mx-auto max-w-4xl">
             <h1
-              className="text-6xl font-bold mb-12 text-center"
+              className="text-4xl md:text-6xl font-bold mb-12 text-center"
               style={{ fontFamily: "'Trobus Expanded', sans-serif" }}
             >
               <span className="text-white metallic-text">TERMS OF</span>{" "}
@@ -54,7 +62,7 @@ const TermsOfService = () => {
               </p>
 
               <p>
-                These Terms of Service (&quot;Terms&quot;) govern your use of Ridgeback Construction&apso;s services
+                These Terms of Service (&quot;Terms&quot;) govern your use of Ridgeback Construction&apos;s services
                 and website. By using our services, you agree to these terms.
               </p>
 
@@ -92,7 +100,5 @@ const TermsOfService = () => {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
-
-export default TermsOfService

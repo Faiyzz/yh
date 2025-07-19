@@ -16,10 +16,11 @@ export const Footer = () => {
           <div className="space-y-4 animate-fade-in">
             <Image
               src="/lovable-uploads/logo.jpg"
-              alt="Ridgeback Construction"
+              alt="Ridgeback Construction Logo"
               width={160}
               height={96}
-              className="h-24 w-auto mb-4"
+              className="h-20 md:h-24 w-auto mb-4"
+              sizes="160px"
             />
             <p className="text-gray-400 metallic-text transition-all duration-1000 ms-3">
               BUILT STRONG. BUILT RIGHT
@@ -30,18 +31,21 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FFE241] hover:text-black transition-all duration-300 hover:scale-110 hover:rotate-12"
+                aria-label="Follow us on Instagram"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href="mailto:info@ridgebackbuilt.com"
                 className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FFE241] hover:text-black transition-all duration-300 hover:scale-110 hover:rotate-12"
+                aria-label="Send us an email"
               >
                 <Mail size={18} />
               </a>
               <a
                 href="tel:8139211717"
                 className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-[#FFE241] hover:text-black transition-all duration-300 hover:scale-110 hover:rotate-12"
+                aria-label="Call us at (813) 921-1717"
               >
                 <Phone size={18} />
               </a>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -7,8 +7,14 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/components/BlogSection";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-const BlogPage = () => {
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" }
+];
+
+export default function BlogPage() {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -18,6 +24,8 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Breadcrumbs items={breadcrumbItems} />
+      
       {/* Header */}
       <div className="bg-zinc-900 py-12">
         <div className="container mx-auto px-4">
@@ -33,7 +41,7 @@ const BlogPage = () => {
             <FileText className="h-12 w-12 text-[#FFE241]" />
             <div>
               <h1
-                className="text-5xl font-bold text-white"
+                className="text-3xl md:text-5xl font-bold text-white"
                 style={{ fontFamily: "'Trobus Expanded', sans-serif" }}
               >
                 EXPERT <span className="text-[#FFE241]">INSIGHTS</span>
@@ -63,12 +71,14 @@ const BlogPage = () => {
                   transitionDelay: `${0.1 + index * 0.05}s`,
                 }}
               >
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-video overflow-hidden relative">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
                 <CardContent className="p-6">
@@ -106,6 +116,4 @@ const BlogPage = () => {
       </section>
     </div>
   );
-};
-
-export default BlogPage;
+}
